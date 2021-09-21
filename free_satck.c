@@ -5,12 +5,12 @@
  * @format: Sting being searched for %
  * @i: holds the place in which % was found in the string
  */
-void free_stack(stack_t **head)
+void free_stack(stack_t *head)
 {
-	if (head == NULL || *head == NULL)
+	if (head == NULL)
 	{
 		return;
 	}
-	free_dlistint(&(*head)->next);
-	free(*head);
+	free_stack(head->next);
+	free(head);
 }

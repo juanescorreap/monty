@@ -9,7 +9,6 @@
 void _push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new_node = NULL;
-	stack_t *stack = NULL;
 	int number = 0;
 	char *string;
 
@@ -46,27 +45,36 @@ void _push(stack_t **head, unsigned int line_number)
 /* pall function */
 void _pall(stack_t **head, unsigned int line_number)
 {
+	(void) line_number;
 	while (*head)
 	{
-		printf("%d\n", *head->n);
-		*head = *head->next;
+		printf("%d\n", (*head)->n);
+		*head = (*head)->next;
 	}
 }
 /* pint function */
 void _pint(stack_t **head, unsigned int line_number)
 {
+	(void) head;
+    (void) line_number;
 }
 /* pop function */
 void _pop(stack_t **head, unsigned int line_number)
 {
+	(void) head;
+    (void) line_number;
 }
 /* swap function */
 void _swap(stack_t **head, unsigned int line_number)
 {
+	(void) head;
+    (void) line_number;
 }
 /* add function */
 void _add(stack_t **head, unsigned int line_number)
 {
+	(void) head;
+    (void) line_number;
 }
 /* nop function */
 void _nop(stack_t **head, unsigned int line_number)

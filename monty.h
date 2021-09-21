@@ -6,14 +6,13 @@
 #include <unistd.h>
 #include <string.h>
 
-#define freedata                                \
-        (DATA) do                               \
+#define freedata(DATA)                          \
+        do                                      \
         {                                       \
                 free((DATA).buffer);            \
                 free_stack((DATA).stack);       \
                 fclose((DATA).pointer_to_file); \
-        }                                       \
-        while (0)
+        } while (0)
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -70,5 +69,8 @@ void _swap(stack_t **head, unsigned int line_number);
 void _add(stack_t **head, unsigned int line_number);
 /* nop function */
 void _nop(stack_t **head, unsigned int line_number);
-
+/*Utility functions*/
+int number_verifier(char *string);
+void free_stack(stack_t *head);
+void(*get_functions())(stack_t **stack, unsigned int line_number);
 #endif
