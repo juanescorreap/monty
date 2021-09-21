@@ -1,26 +1,56 @@
 #include "monty.h"
+
 /**
  * get_op_cases - Function converts numbers to char.
  * Return: Void.
  * @format: Sting being searched for %
  * @i: holds the place in which % was found in the string
  */
-/* push function */
 void _push(stack_t **head, unsigned int line_number)
 {
+	stack_t *new_node = NULL;
+	stack_t *stack = NULL;
+	int number = 0;
+	char *string;
+
+	if (head == NULL)
+	{
+		return;
+	}
+	string = strtok(NULL, " ");
+
+	if (!number_verifier(string))
+	{
+		printf("L%u: usage: push integer", line_number);
+		freedata(data);
+		exit(EXIT_FAILURE);
+	}
+	number = atoi(string);
+
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		printf("Error: malloc failed");
+		freedata(data);
+		exit(EXIT_FAILURE);
+	}
+	new_node->n = number;
+	new_node->next = *head;
+	if (*head != NULL)
+	{
+		(*head)->prev = new_node;
+	}
+
+	*head = new_node;
 }
 /* pall function */
 void _pall(stack_t **head, unsigned int line_number)
 {
-	int i = 0;
-
 	while (*head)
 	{
-		printf("%d\n", *head->line_number);
+		printf("%d\n", *head->n);
 		*head = *head->next;
-		i++;
 	}
-	return (i);
 }
 /* pint function */
 void _pint(stack_t **head, unsigned int line_number)

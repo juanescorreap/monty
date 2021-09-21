@@ -6,6 +6,15 @@
 #include <unistd.h>
 #include <string.h>
 
+#define freedata                                \
+        (DATA) do                               \
+        {                                       \
+                free((DATA).buffer);            \
+                free_stack((DATA).stack);       \
+                fclose((DATA).pointer_to_file); \
+        }                                       \
+        while (0)
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -36,8 +45,16 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+typedef struct inputdata_s
+{
+        char *op_code;
+        char *buffer;
+        FILE *pointer_to_file;
+        stack_t *stack;
+} inputdata_t;
+
 /* Global function*/
-extern
+extern inputdata_t data;
 
 /* push function */
 void _push(stack_t **head, unsigned int line_number);

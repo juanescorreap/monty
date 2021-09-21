@@ -4,10 +4,10 @@
  * Return: Void.
  * @format: Sting being searched for %
  * @i: holds the place in which % was found in the string
- */
-void(*get_functions())
+ **/
+void(*get_functions())(stack_t **stack, unsigned int line_number)
 {
-	int x = 0;
+	int i = 0;
 
 	instruction_t array[] = {
 		{"push", _push},
@@ -19,13 +19,13 @@ void(*get_functions())
 		{"nop", _nop},
 		{NULL, NULL}};
 
-	while (array[x].opcode != NULL)
+	while (array[i].opcode != NULL)
 	{
-		if (*array[x].opcode == format[i])
+		if (strcmp(array[i].opcode, data.op_code) == 0)
 		{
-			return (*array[x].function);
+			return (array[i].f);
 		}
-		x++;
+		i++;
 	}
 	return (NULL);
 }

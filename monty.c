@@ -1,4 +1,5 @@
 #include "monty.h"
+inputdata_t data = {NULL, NULL, NULL, NULL};
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -10,21 +11,35 @@
  */
 int main(int argc, char **argv)
 {
-	char *buffer = NULL;
 	size_t buffersize = 0;
-	FILE *pointer_to_file;
-	int number_char_read;
+	unsigned int i;
+	void (*op_code_handler)(stack_t **stack, unsigned int line_number);
 
 	if(argc != 2)
 	{
-		printf("USAGE: monty file\n");
+		printf("USAGE: monty %s\n", argv[2]);
 		exit(EXIT_FAILURE);
 	}
-	pointer_to_file = fopen(argv[1], "r");
-	number_char_read= getline(&buffer, &buffersize, pointer_to_file);
-	while(number_char_read != -1)
+	data.pointer_to_file = fopen(argv[1], "r");
+	if (data.pointer_to_file == NULL)
 	{
-		strtok(buffer, " ");
+		printf("Error: Can't open file %s\n", argv[2]);
+		exit(EXIT_FAILURE);
 	}
-	return (0)
+	for (i = 1; getline(&data.buffer, &buffersize, data.pointer_to_file) != -1; i++)
+	{
+		data.op_code = strtok(data.buffer, " ");
+		if (data.op_code != NULL)
+		{
+			op_code_handler = get_function();
+			if (op_code_handler == NULL)
+			{
+				printf("Error: Can't open file %s\n", argv[2]);
+				exit(EXIT_FAILURE);
+			}
+			op_code_handler(&stack, i);
+		}
+	}
+	freedata(data);
+	return (EXIT_SUCCESS);
 }
