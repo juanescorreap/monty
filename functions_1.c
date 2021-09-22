@@ -18,7 +18,7 @@ void _push(stack_t **head, unsigned int line_number)
 	string = strtok(NULL, DELIMITERS);
 	if (!number_verifier(string))
 	{
-		fprintf(stderr, "L%u: usage: push integer", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		freedata(data);
 		exit(EXIT_FAILURE);
 	}
@@ -27,7 +27,7 @@ void _push(stack_t **head, unsigned int line_number)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed\n");
 		freedata(data);
 		exit(EXIT_FAILURE);
 	}
@@ -69,7 +69,7 @@ void _pint(stack_t **head, unsigned int line_number)
 {
 	if (*head == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stack empty", line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*head)->n);
