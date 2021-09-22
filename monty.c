@@ -15,12 +15,12 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		fprintf(STDERR_FILENO,"USAGE: monty %s\n", argv[1]);
+		fprintf(STDERR_FILENO,"USAGE: monty %s\n", argv[2]);
 		exit(EXIT_FAILURE);
 	}
 	if (access(argv[1], R_OK) == -1)
 	{
-		printf("Error: Can't open file %s\n", argv[1]);
+		fprintf(STDERR_FILENO,"Error: Can't open file %s\n", argv[2]);
 		exit(EXIT_FAILURE);
 	}
 	data.pointer_to_file = fopen(argv[1], "r");
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 			op_code_handler = get_functions();
 			if (op_code_handler == NULL)
 			{
-				printf("Error: Can't open file %s\n", argv[2]);
+				fprintf(STDERR_FILENO,"Error: Can't open file %s\n", argv[2]);
 				exit(EXIT_FAILURE);
 			}
 			op_code_handler(&data.stack, i);

@@ -18,7 +18,7 @@ void _push(stack_t **head, unsigned int line_number)
 	string = strtok(NULL, DELIMITERS);
 	if (!number_verifier(string))
 	{
-		printf("L%u: usage: push integer", line_number);
+		fprintf(STDERR_FILENO, "L%u: usage: push integer", line_number);
 		freedata(data);
 		exit(EXIT_FAILURE);
 	}
@@ -27,7 +27,7 @@ void _push(stack_t **head, unsigned int line_number)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
-		printf("Error: malloc failed");
+		fprintf(STDERR_FILENO, "Error: malloc failed");
 		freedata(data);
 		exit(EXIT_FAILURE);
 	}
@@ -69,7 +69,7 @@ void _pint(stack_t **head, unsigned int line_number)
 {
 	if (*head == NULL)
 	{
-		printf("L%u: can't pint, stack empty", line_number);
+		fprintf(STDERR_FILENO, "L%u: can't pint, stack empty", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*head)->n);
@@ -86,7 +86,7 @@ void _pop(stack_t **head, unsigned int line_number)
 
 	if (head == NULL || *head == NULL)
 	{
-		printf("L%u: can't pop an empty stack\n", line_number);
+		fprintf(STDERR_FILENO, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	delete_node = *head;
@@ -109,7 +109,7 @@ void _swap(stack_t **head, unsigned int line_number)
 
 	if ((*head) == NULL || (*head)->next == NULL)
 	{
-		printf("L%u: can't swap, stack too short\n", line_number);
+		fprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	(*head)->n = (*head)->next->n;
