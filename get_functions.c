@@ -16,6 +16,9 @@ void (*get_functions())(stack_t **stack, unsigned int line_number)
 		{"swap", _swap},
 		{"add", _add},
 		{"nop", _nop},
+		{"sub", _sub},
+		{"div", _div},
+		{"mul", _mul},
 		{NULL, NULL}};
 
 	while (array[i].opcode != NULL)

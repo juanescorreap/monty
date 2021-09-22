@@ -76,6 +76,12 @@ void _swap(stack_t **head, unsigned int line_number);
 void _add(stack_t **head, unsigned int line_number);
 /* nop function */
 void _nop(stack_t **head, unsigned int line_number);
+/* nop function */
+void _sub(stack_t **head, unsigned int line_number);
+/* nop function */
+void _div(stack_t **head, unsigned int line_number);
+/* nop function */
+void _mul(stack_t **head, unsigned int line_number);
 
 /*number_verifier function*/
 int number_verifier(char *string);
