@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		printf("USAGE: monty %s\n", argv[1]);
+		fprintf(STDERR_FILENO,"USAGE: monty %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	if (access(argv[1], R_OK) == -1)
