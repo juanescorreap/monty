@@ -12,7 +12,7 @@ void _push(stack_t **head, unsigned int line_number)
 	int number = 0;
 	char *string;
 
-	if (head == NULL || *head == NULL)
+	if (head == NULL)
 	{
 		return;
 	}
@@ -56,7 +56,7 @@ void _pall(stack_t **head, unsigned int line_number)
 /* pint function */
 void _pint(stack_t **head, unsigned int line_number)
 {
-	if (head == NULL || *head == NULL)
+	if (*head == NULL)
 	{
 		printf("L%u: can't pint, stack empty", line_number);
 		exit(EXIT_FAILURE);
