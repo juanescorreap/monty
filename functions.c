@@ -16,8 +16,7 @@ void _push(stack_t **head, unsigned int line_number)
 	{
 		return;
 	}
-	string = strtok(NULL, " ");
-
+	string = strtok(NULL, DELIMITERS);
 	if (!number_verifier(string))
 	{
 		printf("L%u: usage: push integer", line_number);

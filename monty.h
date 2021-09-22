@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-
+#define DELIMITERS  (" \n\t\v\f")
 #define freedata(DATA)                          \
         do                                      \
         {                                       \

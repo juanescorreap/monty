@@ -20,7 +20,6 @@ int main(int argc, char **argv)
 		printf("USAGE: monty %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	printf("THIS: %s\n", argv[1]);
 	if (access(argv[1], R_OK) == -1)
 	{
 		printf("Error: Can't open file %s\n", argv[1]);
@@ -29,7 +28,7 @@ int main(int argc, char **argv)
 	data.pointer_to_file = fopen(argv[1], "r");
 	for (i = 1; getline(&data.buffer, &buffersize, data.pointer_to_file) != -1; i++)
 	{
-		data.op_code = strtok(data.buffer, " ");
+		data.op_code = strtok(data.buffer, DELIMITERS);
 		if (data.op_code != NULL)
 		{
 			op_code_handler = get_functions();

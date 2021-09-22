@@ -1,4 +1,4 @@
-Hola push 1
-push 2 Hola
-    push Hola 3
+push 1
+push 2
+push 3
 pall
