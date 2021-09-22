@@ -34,6 +34,7 @@ int main(int argc, char **argv)
 			if (op_code_handler == NULL)
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", i, data.op_code);
+				freedata(data);
 				return (EXIT_FAILURE);
 			}
 			op_code_handler(&data.stack, i);

@@ -1,4 +1,4 @@
-push 0
+hola como estas push 0
 push 1
 push 2
   push 3
