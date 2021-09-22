@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 	}
 	if (access(argv[1], R_OK) == -1)
 	{
-		fprintf(stderr, "Error: Can't open file\n");
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		return (EXIT_FAILURE);
 	}
 	data.pointer_to_file = fopen(argv[1], "r");
