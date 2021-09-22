@@ -44,7 +44,6 @@ void _push(stack_t **head, unsigned int line_number)
 /* pall function */
 void _pall(stack_t **head, unsigned int line_number)
 {
-	(void) line_number;
 	stack_t *temp = *head;
 
 	while(temp)
@@ -52,6 +51,7 @@ void _pall(stack_t **head, unsigned int line_number)
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
+	(void) line_number;
 }
 /* pint function */
 void _pint(stack_t **head, unsigned int line_number)
