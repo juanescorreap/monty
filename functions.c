@@ -86,7 +86,7 @@ void _swap(stack_t **head, unsigned int line_number)
 {
 	int i = (*head)->n;
 
-	if ((*head)->next == NULL)
+	if ((*head) == NULL || (*head)->next == NULL)
 	{
 		printf("L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -97,8 +97,24 @@ void _swap(stack_t **head, unsigned int line_number)
 /* add function */
 void _add(stack_t **head, unsigned int line_number)
 {
-	(void) head;
-    (void) line_number;
+	int sum = 0;
+	stack_t *delete_node;
+
+	if ((*head) == NULL || (*head)->next == NULL)
+	{
+		printf("L%d: can't add, stack too short", line_number);
+	}
+    sum = (*head)->n + (*head)->next->n;
+	(*head)->next->n = sum;
+
+	delete_node = *head;
+	*head = delete_node->next;
+	if (*head != NULL)
+	{
+		(*head)->prev = NULL;
+	}
+	free(delete_node);
+
 }
 /* nop function */
 void _nop(stack_t **head, unsigned int line_number)
