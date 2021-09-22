@@ -1,11 +1,10 @@
 #include "monty.h"
 /**
- * get_op_cases - Function converts numbers to char.
+ * get_functions - Function compares the opecode with an array
+ * and returns the function that excutes it
  * Return: Void.
- * @format: Sting being searched for %
- * @i: holds the place in which % was found in the string
  **/
-void(*get_functions())(stack_t **stack, unsigned int line_number)
+void (*get_functions())(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 

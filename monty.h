@@ -7,14 +7,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#define DELIMITERS  (" \n\t\v\f")
+#define DELIMITERS (" \n\t\v\f")
 #define freedata(DATA)                          \
-        do                                      \
-        {                                       \
-                free((DATA).buffer);            \
-                free_stack((DATA).stack);       \
-                fclose((DATA).pointer_to_file); \
-        } while (0)
+	do {                                    \
+		free((DATA).buffer);            \
+		free_stack((DATA).stack);       \
+		fclose((DATA).pointer_to_file); \
+	} while (0)
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -27,9 +26,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -42,16 +41,23 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
+/**
+ * struct inputdata_s - Struct to store data
+ * @op_code: the opcode
+ * @buffer: Array that stores the line read by getline
+ * @pointer_to_file: Pointer to file where the opcodes are written
+ * @stack: Head to the double linked list being used
+ * Description: Struct to store data
+ */
 typedef struct inputdata_s
 {
-        char *op_code;
-        char *buffer;
-        FILE *pointer_to_file;
-        stack_t *stack;
+	char *op_code;
+	char *buffer;
+	FILE *pointer_to_file;
+	stack_t *stack;
 } inputdata_t;
 
 /* Global function*/
@@ -71,8 +77,11 @@ void _swap(stack_t **head, unsigned int line_number);
 void _add(stack_t **head, unsigned int line_number);
 /* nop function */
 void _nop(stack_t **head, unsigned int line_number);
-/*Utility functions*/
+
+/*number_verifier function*/
 int number_verifier(char *string);
+/*free_stack function*/
 void free_stack(stack_t *head);
-void(*get_functions())(stack_t **stack, unsigned int line_number);
+/*get_functions function*/
+void (*get_functions())(stack_t **stack, unsigned int line_number);
 #endif

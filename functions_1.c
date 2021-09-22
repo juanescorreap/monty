@@ -1,10 +1,9 @@
 #include "monty.h"
-
 /**
- * get_op_cases - Function converts numbers to char.
+ * _push - Function that pushes an element to the top of stack.
  * Return: Void.
- * @format: Sting being searched for %
- * @i: holds the place in which % was found in the string
+ * @head: Head of a double linked list
+ * @line_number: Number of lines executed before an error is printed
  */
 void _push(stack_t **head, unsigned int line_number)
 {
@@ -41,19 +40,31 @@ void _push(stack_t **head, unsigned int line_number)
 
 	*head = new_node;
 }
-/* pall function */
+/**
+ * _pall - Function that prints all the values on the stack,
+ * starting from the top of the stack.
+ * Return: Void.
+ * @head: Head of a double linked list
+ * @line_number: Number of lines executed before an error is printed
+ */
 void _pall(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp = *head;
 
-	while(temp)
+	while (temp)
 	{
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
-	(void) line_number;
+	(void)line_number;
 }
-/* pint function */
+/**
+ * _pint - Function that prints the value at the top of the stack,
+ * followed by a new line
+ * Return: Void.
+ * @head: Head of a double linked list
+ * @line_number: Number of lines executed before an error is printed
+ */
 void _pint(stack_t **head, unsigned int line_number)
 {
 	if (*head == NULL)
@@ -63,7 +74,12 @@ void _pint(stack_t **head, unsigned int line_number)
 	}
 	printf("%d\n", (*head)->n);
 }
-/* pop function */
+/**
+ * _pop - Function that removes the top element of the stack.
+ * Return: Void.
+ * @head: Head of a double linked list
+ * @line_number: Number of lines executed before an error is printed
+ */
 void _pop(stack_t **head, unsigned int line_number)
 {
 	stack_t *delete_node;
@@ -81,7 +97,12 @@ void _pop(stack_t **head, unsigned int line_number)
 	}
 	free(delete_node);
 }
-/* swap function */
+/**
+ * _swap - Function that swaps the top two elements of the stack.
+ * Return: Void.
+ * @head: Head of a double linked list
+ * @line_number: Number of lines executed before an error is printed
+ */
 void _swap(stack_t **head, unsigned int line_number)
 {
 	int i = (*head)->n;
@@ -94,32 +115,3 @@ void _swap(stack_t **head, unsigned int line_number)
 	(*head)->n = (*head)->next->n;
 	(*head)->next->n = i;
 }
-/* add function */
-void _add(stack_t **head, unsigned int line_number)
-{
-	int sum = 0;
-	stack_t *delete_node;
-
-	if ((*head) == NULL || (*head)->next == NULL)
-	{
-		printf("L%d: can't add, stack too short", line_number);
-	}
-    sum = (*head)->n + (*head)->next->n;
-	(*head)->next->n = sum;
-
-	delete_node = *head;
-	*head = delete_node->next;
-	if (*head != NULL)
-	{
-		(*head)->prev = NULL;
-	}
-	free(delete_node);
-
-}
-/* nop function */
-void _nop(stack_t **head, unsigned int line_number)
-{
-	(void) head;
-    (void) line_number;
-}
-
