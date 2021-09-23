@@ -27,6 +27,11 @@ int main(int argc, char **argv)
 	for (i = 1; getline(&data.buffer, &buffersize, data.pointer_to_file)
 	!= -1; i++)
 	{
+		if (data.buffer == NULL)
+		{
+			fprintf(stderr, "Error: malloc failed\n");
+			exit(EXIT_FAILURE);
+		}
 		data.op_code = strtok(data.buffer, DELIMITERS);
 		if (data.op_code != NULL)
 		{
