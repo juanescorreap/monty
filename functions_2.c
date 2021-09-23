@@ -45,7 +45,7 @@ void _nop(stack_t **head, unsigned int line_number)
  */
 void _sub(stack_t **head, unsigned int line_number)
 {
-	int rest = 0;
+	int rest;
 	stack_t *delete_node;
 
 	if ((*head) == NULL || (*head)->next == NULL)
@@ -76,7 +76,7 @@ void _sub(stack_t **head, unsigned int line_number)
  */
 void _div(stack_t **head, unsigned int line_number)
 {
-	int div = 0;
+	int div;
 	stack_t *delete_node;
 
 	if ((*head) == NULL || (*head)->next == NULL)
@@ -108,7 +108,7 @@ void _div(stack_t **head, unsigned int line_number)
  */
 void _mul(stack_t **head, unsigned int line_number)
 {
-	int mul = 0;
+	int mul;
 	stack_t *delete_node;
 
 	if ((*head) == NULL || (*head)->next == NULL)
