@@ -45,7 +45,6 @@ void _nop(stack_t **head, unsigned int line_number)
  */
 void _sub(stack_t **head, unsigned int line_number)
 {
-	int rest;
 	stack_t *delete_node;
 
 	if ((*head) == NULL || (*head)->next == NULL)
@@ -53,12 +52,7 @@ void _sub(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	rest = (*head)->n - (*head)->next->n;
-	if (rest < 0)
-	{
-		rest = rest * -1;
-	}
-	(*head)->next->n = rest;
+	(*head)->next->n -= (*head)->n;
 
 	delete_node = *head;
 	*head = delete_node->next;
