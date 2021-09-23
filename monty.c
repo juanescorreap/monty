@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 {
 	size_t buffersize = 0;
 	unsigned int i;
-	void (*op_code_handler)(stack_t * *stack, unsigned int line_number);
+	void (*op_code_handler)(stack_t **stack, unsigned int line_number);
 
 	if (argc != 2)
 	{
@@ -24,13 +24,9 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	data.pointer_to_file = fopen(argv[1], "r");
-	for (i = 1; getline(&data.buffer, &buffersize, data.pointer_to_file) != -1; i++)
+	for (i = 1; getline(&data.buffer, &buffersize, data.pointer_to_file)
+	!= -1; i++)
 	{
-		if (data.buffer == NULL)
-		{
-			fprintf(stderr, "Error: malloc failed\n");
-			exit(EXIT_FAILURE);
-		}
 		data.op_code = strtok(data.buffer, DELIMITERS);
 		if (data.op_code != NULL)
 		{
