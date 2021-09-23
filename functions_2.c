@@ -70,7 +70,6 @@ void _sub(stack_t **head, unsigned int line_number)
  */
 void _div(stack_t **head, unsigned int line_number)
 {
-	int div;
 	stack_t *delete_node;
 
 	if ((*head) == NULL || (*head)->next == NULL)
@@ -83,8 +82,7 @@ void _div(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	div = (*head)->n / (*head)->next->n;
-	(*head)->next->n = div;
+	(*head)->next->n /= (*head)->n;
 
 	delete_node = *head;
 	*head = delete_node->next;
@@ -102,7 +100,6 @@ void _div(stack_t **head, unsigned int line_number)
  */
 void _mul(stack_t **head, unsigned int line_number)
 {
-	int mul;
 	stack_t *delete_node;
 
 	if ((*head) == NULL || (*head)->next == NULL)
@@ -110,8 +107,7 @@ void _mul(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	mul = (*head)->n * (*head)->next->n;
-	(*head)->next->n = mul;
+	(*head)->next->n *= (*head)->n;
 
 	delete_node = *head;
 	*head = delete_node->next;
