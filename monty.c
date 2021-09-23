@@ -9,7 +9,7 @@ inputdata_t data = {NULL, NULL, NULL, NULL};
  */
 int main(int argc, char **argv)
 {
-	size_t buffersize = 0;
+	size_t buffersize = 1024;
 	unsigned int i;
 	void (*op_code_handler)(stack_t **stack, unsigned int line_number);
 
@@ -22,6 +22,12 @@ int main(int argc, char **argv)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		return (EXIT_FAILURE);
+	}
+	data.buffer = malloc(buffersize);
+	if (data.buffer == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
 	}
 	data.pointer_to_file = fopen(argv[1], "r");
 	for (i = 1; getline(&data.buffer, &buffersize, data.pointer_to_file)
@@ -39,11 +45,6 @@ int main(int argc, char **argv)
 			}
 			op_code_handler(&data.stack, i);
 		}
-	}
-	if (data.buffer == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
 	}
 	freedata(data);
 	return (EXIT_SUCCESS);
